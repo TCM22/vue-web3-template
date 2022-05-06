@@ -1,5 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>test</div>
+  <div class="w-full px-4 sm:px-6">
+    <slot />
+  </div>
 </template>
