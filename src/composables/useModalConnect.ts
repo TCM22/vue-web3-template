@@ -1,7 +1,7 @@
-import { ref } from "vue";
+import { ref } from 'vue'
 
-const isOpen = ref(false);
+const isOpen = ref(false)
 
 export function useModalConnect() {
-  return { isOpen };
+  return { isOpen }
 }

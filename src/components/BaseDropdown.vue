@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { Menu, MenuButton, MenuItems, MenuItem } from "@headlessui/vue";
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 
 defineProps<{
-  dropdownItems: { name: string; action: string }[];
-}>();
+  dropdownItems: { name: string; action: string }[]
+}>()
 
-defineEmits(["action"]);
+defineEmits(['action'])
 </script>
 
 <template>

@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
-import { useWeb3 } from "@/composables/useWeb3";
-const { auth, login } = useWeb3();
+import { onMounted, ref } from 'vue'
+import { useWeb3 } from '@/composables/useWeb3'
+const { auth, login } = useWeb3()
 
-const sidebarOpen = ref(false);
+const sidebarOpen = ref(false)
 
 // Initialize wallet
 onMounted(async () => {
   auth.getConnector().then((connector: any) => {
-    if (connector) login(connector);
-  });
-});
+    if (connector) login(connector)
+  })
+})
 </script>
 
 <template>

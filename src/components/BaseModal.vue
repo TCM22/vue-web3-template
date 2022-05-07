@@ -9,11 +9,11 @@ import {
   DialogTitle,
   TransitionChild,
   TransitionRoot,
-} from "@headlessui/vue";
+} from '@headlessui/vue'
 
-defineEmits(["close"]);
+defineEmits(['close'])
 
-defineProps<{ isOpen: boolean; title: string }>();
+defineProps<{ isOpen: boolean; title: string }>()
 </script>
 
 <template>

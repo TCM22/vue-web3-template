@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useModalConnect } from "@/composables/useModalConnect";
+import { useModalConnect } from '@/composables/useModalConnect'
 
-const { isOpen } = useModalConnect();
+const { isOpen } = useModalConnect()
 </script>
 
 <template>

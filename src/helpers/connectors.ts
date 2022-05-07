@@ -1,19 +1,19 @@
 export const connectors = {
   injected: {
-    id: "injected",
-    name: "MetaMask",
+    id: 'injected',
+    name: 'MetaMask',
   },
   walletconnect: {
-    id: "walletconnect",
-    name: "WalletConnect",
-    network: "1",
+    id: 'walletconnect',
+    name: 'WalletConnect',
+    network: '1',
     options: {
       rpc: {
-        "1": "https://cloudflare-eth.com",
-        "4": "https://eth-rinkeby.alchemyapi.io/v2/twReQE9Px03E-E_N_Fbb3OVF7YgHxoGq",
-        "42": "https://eth-kovan.alchemyapi.io/v2/QCsM2iU0bQ49eGDmZ7-Y--Wpu0lVWXSO",
+        '1': 'https://cloudflare-eth.com',
+        '4': 'https://eth-rinkeby.alchemyapi.io/v2/twReQE9Px03E-E_N_Fbb3OVF7YgHxoGq',
+        '42': 'https://eth-kovan.alchemyapi.io/v2/QCsM2iU0bQ49eGDmZ7-Y--Wpu0lVWXSO',
       },
     },
-    icon: "ipfs://QmZRVqHpgRemw13aoovP2EaQdVtjzXRaQGQZsCLXWaNn9x",
+    icon: 'ipfs://QmZRVqHpgRemw13aoovP2EaQdVtjzXRaQGQZsCLXWaNn9x',
   },
-};
+}

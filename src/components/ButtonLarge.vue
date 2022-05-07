@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps<{
-  primary?: boolean;
-}>();
+  primary?: boolean
+}>()
 </script>
 
 <template>

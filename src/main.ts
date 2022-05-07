@@ -1,17 +1,17 @@
-import { createApp } from "vue";
-import { createPinia } from "pinia";
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
 
-import App from "./App.vue";
-import router from "./router";
-import "./styles.css";
+import App from './App.vue'
+import router from './router'
+import './styles.css'
 
-import { LockPlugin } from "vite-plugin-vue-lock";
-import { connectors } from "@/helpers/connectors";
+import { LockPlugin } from 'vite-plugin-vue-lock'
+import { connectors } from '@/helpers/connectors'
 
-const app = createApp(App);
+const app = createApp(App)
 
-app.use(createPinia());
-app.use(router);
-app.use(LockPlugin, { connectors });
+app.use(createPinia())
+app.use(router)
+app.use(LockPlugin, { connectors })
 
-app.mount("#app");
+app.mount('#app')

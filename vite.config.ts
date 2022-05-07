@@ -1,11 +1,11 @@
-import { fileURLToPath, URL } from "url";
+import { fileURLToPath, URL } from 'url'
 
-import { defineConfig } from "vite";
-import vue from "@vitejs/plugin-vue";
-import Components from "unplugin-vue-components/vite";
-import IconsResolver from "unplugin-icons/resolver";
-import { FileSystemIconLoader } from "unplugin-icons/loaders";
-import Icons from "unplugin-icons/vite";
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import Components from 'unplugin-vue-components/vite'
+import IconsResolver from 'unplugin-icons/resolver'
+import { FileSystemIconLoader } from 'unplugin-icons/loaders'
+import Icons from 'unplugin-icons/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,18 +14,18 @@ export default defineConfig({
     Components({
       resolvers: [
         IconsResolver({
-          customCollections: ["s"],
+          customCollections: ['s'],
           alias: {
-            ho: "heroicons-outline",
+            ho: 'heroicons-outline',
           },
         }),
       ],
     }),
     Icons({
-      compiler: "vue3",
+      compiler: 'vue3',
       customCollections: {
         // key as the collection name
-        s: FileSystemIconLoader("./src/assets/icons", (svg) =>
+        s: FileSystemIconLoader('./src/assets/icons', (svg) =>
           svg.replace(/^<svg /, '<svg fill="currentColor" ')
         ),
       },
@@ -33,7 +33,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-});
+})

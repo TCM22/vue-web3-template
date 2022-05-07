@@ -1,5 +1,5 @@
 <script setup lang="ts">
-defineEmits(["open"]);
+defineEmits(['open'])
 </script>
 
 <template>

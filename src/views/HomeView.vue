@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useWeb3 } from "@/composables/useWeb3";
+import { useWeb3 } from '@/composables/useWeb3'
 
-const { web3Account, web3 } = useWeb3();
+const { web3Account, web3 } = useWeb3()
 </script>
 
 <template>

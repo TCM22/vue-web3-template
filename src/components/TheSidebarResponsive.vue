@@ -5,21 +5,21 @@ import {
   DialogPanel,
   TransitionChild,
   TransitionRoot,
-} from "@headlessui/vue";
-import { useWeb3 } from "@/composables/useWeb3";
+} from '@headlessui/vue'
+import { useWeb3 } from '@/composables/useWeb3'
 
-const { web3Account } = useWeb3();
+const { web3Account } = useWeb3()
 
 const navigation = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-];
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+]
 
 defineProps<{
-  sidebarOpen: boolean;
-}>();
+  sidebarOpen: boolean
+}>()
 
-defineEmits(["close"]);
+defineEmits(['close'])
 </script>
 
 <template>

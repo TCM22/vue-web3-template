@@ -1,36 +1,36 @@
-import { computed, reactive } from "vue";
-import { Web3Provider } from "@ethersproject/providers";
-import { getInstance } from "vite-plugin-vue-lock";
+import { computed, reactive } from 'vue'
+import { Web3Provider } from '@ethersproject/providers'
+import { getInstance } from 'vite-plugin-vue-lock'
 
-const defaultNetwork = 1;
+const defaultNetwork = 1
 
 const state = reactive<{
-  account: string;
-  chainId: number;
-  authLoading: boolean;
+  account: string
+  chainId: number
+  authLoading: boolean
 }>({
-  account: "",
+  account: '',
   chainId: defaultNetwork,
   authLoading: false,
-});
+})
 
 export function useWeb3() {
-  const auth = getInstance();
+  const auth = getInstance()
 
-  async function login(connector = "injected") {
-    state.authLoading = true;
+  async function login(connector = 'injected') {
+    state.authLoading = true
 
-    await auth.login(connector);
+    await auth.login(connector)
     if (auth.provider.value) {
-      auth.web3 = new Web3Provider(auth.provider.value, "any");
-      await loadProvider();
+      auth.web3 = new Web3Provider(auth.provider.value, 'any')
+      await loadProvider()
     }
-    state.authLoading = false;
+    state.authLoading = false
   }
 
   function logout() {
-    auth.logout();
-    state.account = "";
+    auth.logout()
+    state.account = ''
   }
 
   async function loadProvider() {
@@ -39,45 +39,45 @@ export function useWeb3() {
         auth.provider.value.removeAllListeners &&
         !auth.provider.value.isTorus
       )
-        auth.provider.value.removeAllListeners();
+        auth.provider.value.removeAllListeners()
       if (auth.provider.value.on) {
-        auth.provider.value.on("chainChanged", async (chainId: any) => {
-          state.chainId = chainId;
-        });
+        auth.provider.value.on('chainChanged', async (chainId: any) => {
+          state.chainId = chainId
+        })
         auth.provider.value.on(
-          "accountsChanged",
+          'accountsChanged',
           async (accounts: string[]) => {
             if (accounts.length !== 0) {
-              state.account = accounts[0];
-              await login();
+              state.account = accounts[0]
+              await login()
             }
           }
-        );
+        )
       }
-      console.log("Provider", auth.provider.value);
-      let network, accounts;
+      console.log('Provider', auth.provider.value)
+      let network, accounts
       try {
-        const connector = auth.provider.value?.connectorName;
-        if (connector === "gnosis") {
-          const { chainId: safeChainId, safeAddress } = auth.web3.provider.safe;
-          network = { chainId: safeChainId };
-          accounts = [safeAddress];
+        const connector = auth.provider.value?.connectorName
+        if (connector === 'gnosis') {
+          const { chainId: safeChainId, safeAddress } = auth.web3.provider.safe
+          network = { chainId: safeChainId }
+          accounts = [safeAddress]
         } else {
-          [network, accounts] = await Promise.all([
+          ;[network, accounts] = await Promise.all([
             auth.web3.getNetwork(),
             auth.web3.listAccounts(),
-          ]);
+          ])
         }
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
-      console.log("Network", network);
-      console.log("Accounts", accounts);
+      console.log('Network', network)
+      console.log('Accounts', accounts)
 
-      state.account = accounts.length > 0 ? accounts[0] : null;
+      state.account = accounts.length > 0 ? accounts[0] : null
     } catch (e) {
-      state.account = "";
-      return Promise.reject(e);
+      state.account = ''
+      return Promise.reject(e)
     }
   }
 
@@ -87,5 +87,5 @@ export function useWeb3() {
     login,
     logout,
     auth,
-  };
+  }
 }

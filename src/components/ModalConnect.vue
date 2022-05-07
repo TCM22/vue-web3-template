@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
-import { useWeb3 } from "@/composables/useWeb3";
-import { connectors } from "@/helpers/connectors";
-import { getIpfsUrl } from "@/helpers/utils";
-import { useModalConnect } from "@/composables/useModalConnect";
-import { refDebounced } from "@vueuse/core";
-import { getInjectedWallet } from "vite-plugin-vue-lock";
+import { ref, computed } from 'vue'
+import { useWeb3 } from '@/composables/useWeb3'
+import { connectors } from '@/helpers/connectors'
+import { getIpfsUrl } from '@/helpers/utils'
+import { useModalConnect } from '@/composables/useModalConnect'
+import { refDebounced } from '@vueuse/core'
+import { getInjectedWallet } from 'vite-plugin-vue-lock'
 
-const { isOpen } = useModalConnect();
-const { login, web3Account } = useWeb3();
+const { isOpen } = useModalConnect()
+const { login, web3Account } = useWeb3()
 
-const loading = ref(false);
-const loadingDebounced = refDebounced(loading);
+const loading = ref(false)
+const loadingDebounced = refDebounced(loading)
 
 async function handleSelect(connectorId: string) {
-  loading.value = true;
-  await login(connectorId);
-  loading.value = false;
-  if (web3Account.value) return (isOpen.value = false);
+  loading.value = true
+  await login(connectorId)
+  loading.value = false
+  if (web3Account.value) return (isOpen.value = false)
 }
 
-const injectedWallet = computed(() => getInjectedWallet());
+const injectedWallet = computed(() => getInjectedWallet())
 </script>
 
 <template>

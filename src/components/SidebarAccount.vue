@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useWeb3 } from "@/composables/useWeb3";
-import { shortenAddress } from "@/helpers/utils";
+import { useWeb3 } from '@/composables/useWeb3'
+import { shortenAddress } from '@/helpers/utils'
 
-const { web3Account } = useWeb3();
+const { web3Account } = useWeb3()
 </script>
 
 <template>

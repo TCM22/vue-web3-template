@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { useWeb3 } from "@/composables/useWeb3";
+import { useWeb3 } from '@/composables/useWeb3'
 
-const { web3Account } = useWeb3();
+const { web3Account } = useWeb3()
 
 const navigation = [
-  { name: "Home", path: "/" },
-  { name: "About", path: "/about" },
-];
+  { name: 'Home', path: '/' },
+  { name: 'About', path: '/about' },
+]
 </script>
 
 <template>
