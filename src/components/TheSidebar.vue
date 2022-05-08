@@ -2,11 +2,6 @@
 import { useWeb3 } from '@/composables/useWeb3'
 
 const { web3Account } = useWeb3()
-
-const navigation = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-]
 </script>
 
 <template>
@@ -21,14 +16,7 @@ const navigation = [
           <SidebarAccount />
         </DropdownAccount>
       </div>
-      <nav class="mt-5 flex-1" aria-label="Sidebar">
-        <div class="space-y-1 px-2">
-          <BaseLink v-for="item in navigation" :key="item.name" :to="item.path">
-            <i-ho-home v-if="item.name === 'Home'" class="mr-3 h-6 w-6" />
-            {{ item.name }}
-          </BaseLink>
-        </div>
-      </nav>
+      <SidebarNavigation />
     </div>
   </div>
 </template>

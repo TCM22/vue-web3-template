@@ -10,11 +10,6 @@ import { useWeb3 } from '@/composables/useWeb3'
 
 const { web3Account } = useWeb3()
 
-const navigation = [
-  { name: 'Home', path: '/' },
-  { name: 'About', path: '/about' },
-]
-
 defineProps<{
   sidebarOpen: boolean
 }>()
@@ -26,7 +21,7 @@ defineEmits(['close'])
   <TransitionRoot as="template" :show="sidebarOpen">
     <Dialog
       as="div"
-      class="fixed inset-0 z-40 flex lg:hidden"
+      class="fixed inset-0 z-40 flex lg:hidden text-zinc-200"
       @close="$emit('close')"
     >
       <TransitionChild
@@ -78,18 +73,7 @@ defineEmits(['close'])
             <div v-if="web3Account" class="mt-4 px-2">
               <SidebarAccount />
             </div>
-            <nav aria-label="Sidebar" class="mt-5">
-              <div class="space-y-1 px-2">
-                <BaseLink
-                  v-for="item in navigation"
-                  :key="item.name"
-                  :to="item.path"
-                >
-                  <i-ho-home v-if="item.name === 'Home'" class="mr-3 h-6 w-6" />
-                  {{ item.name }}
-                </BaseLink>
-              </div>
-            </nav>
+            <SidebarNavigation />
           </DialogPanel>
         </div>
       </TransitionChild>

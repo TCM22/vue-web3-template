@@ -1,20 +1,22 @@
 <script setup lang="ts">
-defineProps<{
-  to: string;
-}>();
+import { computed } from 'vue'
+
+const props = defineProps<{
+  to: string | { name: string; path?: string; params?: any }
+}>()
+
+const isExternal = computed(
+  () => typeof props.to === 'string' && props.to.startsWith('https')
+)
+
+defineExpose({ isExternal })
 </script>
 
 <template>
-  <router-link v-slot="{ isExactActive }" :to="to" class="outline-none">
-    <BaseButton
-      :class="[
-        isExactActive
-          ? 'bg-zinc-700 text-zinc-50'
-          : 'text-zinc-200 hover:bg-zinc-700',
-        'flex w-full items-center rounded-md px-2 py-2 text-sm font-medium',
-      ]"
-    >
-      <slot />
-    </BaseButton>
+  <a v-if="isExternal" :href="(to as string)" target="_blank" rel="noopener">
+    <slot />
+  </a>
+  <router-link v-else :to="to" v-slot="{ isExactActive }">
+    <slot :isExactActive="isExactActive" />
   </router-link>
 </template>
