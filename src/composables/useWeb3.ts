@@ -35,13 +35,8 @@ export function useWeb3() {
 
   async function loadProvider() {
     try {
-      if (
-        auth.provider.value.removeAllListeners &&
-        !auth.provider.value.isTorus
-      )
-        auth.provider.value.removeAllListeners()
       if (auth.provider.value.on) {
-        auth.provider.value.on('chainChanged', async (chainId: any) => {
+        auth.provider.value.on('chainChanged', async (chainId: number) => {
           state.chainId = chainId
         })
         auth.provider.value.on(
@@ -54,26 +49,7 @@ export function useWeb3() {
           }
         )
       }
-      console.log('Provider', auth.provider.value)
-      let network, accounts
-      try {
-        const connector = auth.provider.value?.connectorName
-        if (connector === 'gnosis') {
-          const { chainId: safeChainId, safeAddress } = auth.web3.provider.safe
-          network = { chainId: safeChainId }
-          accounts = [safeAddress]
-        } else {
-          ;[network, accounts] = await Promise.all([
-            auth.web3.getNetwork(),
-            auth.web3.listAccounts(),
-          ])
-        }
-      } catch (e) {
-        console.log(e)
-      }
-      console.log('Network', network)
-      console.log('Accounts', accounts)
-
+      const accounts = (await auth.web3.listAccounts()) ?? []
       state.account = accounts.length > 0 ? accounts[0] : null
     } catch (e) {
       state.account = ''

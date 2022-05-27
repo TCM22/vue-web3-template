@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useModalConnect } from '@/composables/useModalConnect'
 
-const { isOpen } = useModalConnect()
+const { openConnect } = useModalConnect()
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const { isOpen } = useModalConnect()
       <p>Get started by connecting your wallet.</p>
     </div>
 
-    <ButtonLarge class="mt-2" primary @click="isOpen = true">
+    <ButtonLarge class="mt-2" primary @click="openConnect">
       Connect wallet
     </ButtonLarge>
   </div>

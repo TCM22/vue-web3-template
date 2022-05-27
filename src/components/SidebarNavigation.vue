@@ -1,8 +1,5 @@
 <script setup lang="ts">
-const navigation = [
-  { name: 'home', path: '/' },
-  { name: 'about', path: '/about' },
-]
+const navigation = [{ name: 'home', path: '/' }]
 </script>
 
 <template>

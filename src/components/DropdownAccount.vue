@@ -2,11 +2,11 @@
 import { useWeb3 } from '@/composables/useWeb3'
 import { useModalConnect } from '@/composables/useModalConnect'
 const { logout } = useWeb3()
-const { isOpen } = useModalConnect()
+const { openConnect } = useModalConnect()
 
 function handleAction(e: string) {
   if (e === 'disconnect') return logout()
-  if (e === 'change') return (isOpen.value = true)
+  if (e === 'change') return openConnect()
 }
 
 const items = [

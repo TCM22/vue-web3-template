@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 
 const props = defineProps<{
-  to: string | { name: string; path?: string; params?: any }
+  to: string | { name: string; path?: string; params?: unknown }
 }>()
 
 const isExternal = computed(
@@ -16,7 +16,12 @@ defineExpose({ isExternal })
   <a v-if="isExternal" :href="(to as string)" target="_blank" rel="noopener">
     <slot />
   </a>
-  <router-link v-else :to="to" v-slot="{ isExactActive }">
+  <router-link
+    v-else
+    :to="to"
+    v-slot="{ isExactActive }"
+    class="focus:outline-none focus:ring-indigo-300/50 focus-visible:ring-2 block rounded-md"
+  >
     <slot :isExactActive="isExactActive" />
   </router-link>
 </template>

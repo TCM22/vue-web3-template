@@ -7,7 +7,7 @@ import { useModalConnect } from '@/composables/useModalConnect'
 import { refDebounced } from '@vueuse/core'
 import { getInjectedWallet } from 'vite-plugin-vue-lock'
 
-const { isOpen } = useModalConnect()
+const { isConnectOpen, closeConnect } = useModalConnect()
 const { login, web3Account } = useWeb3()
 
 const loading = ref(false)
@@ -17,7 +17,7 @@ async function handleSelect(connectorId: string) {
   loading.value = true
   await login(connectorId)
   loading.value = false
-  if (web3Account.value) return (isOpen.value = false)
+  if (web3Account.value) return closeConnect()
 }
 
 const injectedWallet = computed(() => getInjectedWallet())
@@ -25,9 +25,9 @@ const injectedWallet = computed(() => getInjectedWallet())
 
 <template>
   <BaseModal
-    :is-open="isOpen"
+    :is-open="isConnectOpen"
     title="Available wallets"
-    @close="isOpen = false"
+    @close="closeConnect"
   >
     <template #body>
       <div v-if="loadingDebounced" class="h-[140px] gap-2 text-center">
