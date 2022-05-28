@@ -21,7 +21,7 @@ defineEmits(['close'])
   <TransitionRoot as="template" :show="sidebarOpen">
     <Dialog
       as="div"
-      class="fixed inset-0 z-40 flex lg:hidden text-zinc-200"
+      class="fixed inset-0 z-40 flex text-zinc-200 lg:hidden"
       @close="$emit('close')"
     >
       <TransitionChild
