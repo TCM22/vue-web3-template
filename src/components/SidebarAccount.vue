@@ -2,7 +2,7 @@
 import { useWeb3 } from '@/composables/useWeb3'
 import { shortenAddress } from '@/helpers/utils'
 
-const { web3Account } = useWeb3()
+const { web3Account, web3 } = useWeb3()
 </script>
 
 <template>
@@ -22,7 +22,7 @@ const { web3Account } = useWeb3()
       <p class="text-sm font-medium text-zinc-200">
         {{ shortenAddress(web3Account) }}
       </p>
-      <p class="text-xs font-medium text-zinc-400">name</p>
+      <p class="text-xs font-medium text-zinc-400">{{ web3.ens }}</p>
     </div>
   </div>
 </template>

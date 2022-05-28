@@ -6,10 +6,12 @@ const defaultNetwork = 1
 
 const state = reactive<{
   account: string
+  ens: string
   chainId: number
   authLoading: boolean
 }>({
   account: '',
+  ens: '',
   chainId: defaultNetwork,
   authLoading: false,
 })
@@ -51,6 +53,7 @@ export function useWeb3() {
       }
       const accounts = (await auth.web3.listAccounts()) ?? []
       state.account = accounts.length > 0 ? accounts[0] : null
+      state.ens = await auth.web3.lookupAddress(state.account)
     } catch (e) {
       state.account = ''
       return Promise.reject(e)
