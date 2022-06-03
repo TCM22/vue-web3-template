@@ -40,7 +40,7 @@ export function useWeb3() {
       if (auth.provider.value.on) {
         auth.provider.value.on('chainChanged', async (chainId: number) => {
           state.chainId = chainId
-          await login()
+          window.location.reload()
         })
         auth.provider.value.on(
           'accountsChanged',
