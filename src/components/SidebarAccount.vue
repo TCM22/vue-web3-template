@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { useWeb3 } from '@/composables/useWeb3'
 import { shortenAddress } from '@/helpers/utils'
+import SidebarAccountSkeleton from './SidebarAccountSkeleton.vue'
 
 const { web3Account, web3 } = useWeb3()
 </script>
 
 <template>
+  <SidebarAccountSkeleton v-if="web3.authLoading" />
   <div
+    v-else
     class="flex w-full flex-shrink-0 items-center rounded-lg p-2 text-left hover:bg-zinc-700"
   >
     <img
