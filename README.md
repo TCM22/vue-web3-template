@@ -1,5 +1,5 @@
-# Prometeus
+# vue-web3-template
+ Start template for web3 app
 
-Start template for web3 app
-
-### Demo
+### Demo 
+https://vue-web3-template.vercel.app/
